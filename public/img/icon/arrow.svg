@@ -1,0 +1,12 @@
+<svg
+    width="20"
+    height="20"
+    xmlns="http://www.w3.org/2000/svg" class="absolute right-4 top-1/2 -translate-y-1/2 fill-current"
+    fill="none"
+    >
+    <g>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="m4.41107,6.9107c0.32544,-0.32543 0.85307,-0.32543 1.17851,0l4.41072,4.4107l4.4108,-4.41069c0.3254,-0.32544 0.853,-0.32544 1.1785,0c0.3254,0.32543 0.3254,0.85307 0,1.17851l-5,4.99998c-0.3255,0.3255 -0.85309,0.3255 -1.17853,0l-5,-4.99998c-0.32544,-0.32544 -0.32544,-0.85308 0,-1.17852z" fill="#fff" id="svg_1"/>
+
+        <path fill="#000" stroke="#fff" opacity="NaN" d="m10.63492,11.7857" id="svg_2"/>
+    </g>
+</svg>
