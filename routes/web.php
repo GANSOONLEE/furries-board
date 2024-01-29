@@ -34,6 +34,29 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/*
+ |----------------------------------
+ | Frontend Routes
+ |----------------------------------
+ |
+ */
+
+ Route::group(['as' => 'frontend.'], function () {
+    includeRouteFiles(__DIR__ . '/frontend/');
+});
+
+/*
+ |----------------------------------
+ | Backend Routes
+ |----------------------------------
+ |
+ | These routes can only be accessed by users with type `admin`
+ |
+ */
+
+Route::group(['as' => 'frontend.'], function () {
+    includeRouteFiles(__DIR__ . '/frontend/');
+});
 
 Route::get('user-management', function () {
     return Inertia::render('Backend/UserManagement');
