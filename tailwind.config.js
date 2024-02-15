@@ -10,6 +10,8 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        "./pages/**/*.vue",
+        "./components/**/*.vue",
     ],
     theme: {
         screens: {
@@ -35,7 +37,6 @@ export default {
                 graydarker: '#333A48',
                 'gray-2': '#F7F9FC',
                 'gray-3': '#FAFAFA',
-                white: '#FFFFFF',
                 whiten: '#F1F5F9',
                 whiter: '#F5F7FD',
                 boxdark: '#24303F',

@@ -21,3 +21,10 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+// Color Schema
+if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.querySelector('html').classList.add('dark');
+} else {
+    document.querySelector('html').classList.remove('dark')
+}

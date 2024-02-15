@@ -10,7 +10,7 @@ if (! function_exists('appName')) {
      */
     function appName()
     {
-        return config('app.name', 'Frozen Aircond Sdn Bhd');
+        return config('app.name', '純靠北工程師');
     }
 }
 

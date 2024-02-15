@@ -29,9 +29,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', function () {
+        return Inertia::render('Backend/User/Dashboard');
+    })->name('backend.user.dashboard');
 });
 
 /*
@@ -41,7 +41,7 @@ Route::middleware([
  |
  */
 
- Route::group(['as' => 'frontend.'], function () {
+Route::group([], function () {
     includeRouteFiles(__DIR__ . '/frontend/');
 });
 
@@ -54,10 +54,6 @@ Route::middleware([
  |
  */
 
-Route::group(['as' => 'frontend.'], function () {
-    includeRouteFiles(__DIR__ . '/frontend/');
-});
-
-Route::get('user-management', function () {
-    return Inertia::render('Backend/UserManagement');
+Route::group(['as' => 'backend.'], function () {
+    includeRouteFiles(__DIR__ . '/backend/');
 });

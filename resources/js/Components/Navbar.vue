@@ -9,15 +9,11 @@ const props = defineProps({
     },
     darkMode: {
         type: Boolean,
-        default: false
+        default() {
+            return document.querySelector('html').classList.contains('dark') ? true : false;
+        }
     }
 });
-
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
 
 const emit = defineEmits();
 
@@ -26,7 +22,13 @@ const openSidebar = () => {
 };
 
 const toggleTheme = () => {
-    document.querySelector('body').classList.toggle('dark');
+    document.querySelector('html').classList.toggle('dark');
+
+    if(document.querySelector('html').classList.contains('dark')) {
+        localStorage.setItem('color-theme', 'dark');
+    } else {
+        localStorage.setItem('color-theme', 'light');
+    }
 }
 
 </script>
@@ -75,11 +77,11 @@ const toggleTheme = () => {
                         <!-- Dark Mode Toggler -->
                         <label :class="darkMode ? 'bg-primary' : 'bg-stroke'"
                             class="relative m-0 block h-7.5 w-14 rounded-full">
-                            <input type="checkbox" :value="darkMode" @change="darkMode = !darkMode"
-                                @click.stop="toggleTheme" class="absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0" />
+                            <input type="checkbox" @change="darkMode = !darkMode"
+                                @click.stop="toggleTheme" checked="darkMode" class="absolute top-0 z-50 m-0 h-full w-full cursor-pointer opacity-0"/>
                             <span :class="darkMode && '!right-[3px] !translate-x-full'"
                                 class="absolute top-1/2 left-[3px] flex h-6 w-6 -translate-y-1/2 translate-x-0 items-center justify-center rounded-full bg-white shadow-switcher duration-75 ease-linear">
-                                <span class="dark:hidden">
+                                <span class="hidden dark:inline-block">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -90,7 +92,7 @@ const toggleTheme = () => {
                                             fill="#969AA1" />
                                     </svg>
                                 </span>
-                                <span class="hidden dark:inline-block">
+                                <span class="dark:hidden">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -112,10 +114,19 @@ const toggleTheme = () => {
                         </span>
 
                         <span class="flex justify-center items-center h-12 w-12 rounded-full overflow-hidden">
-                            <img class="w-6 h-6" src="/img/icon/user-profile.svg" alt="user" />
+                            <svg class="stroke-black dark:stroke-white" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> 
                         </span>
 
-                        <object  type="image/svg+xml" data="/img/icon/arrow.svg" class="dark:!stroke-black" alt="" :class="{ 'rotate-180': dropdownOpen }"></object>
+                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="stroke-black dark:stroke-white" fill="none">
+                            <g>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="m4.41107,6.9107c0.32544,-0.32543 0.85307,-0.32543 1.17851,0l4.41072,4.4107l4.4108,-4.41069c0.3254,-0.32544 0.853,-0.32544 1.1785,0c0.3254,0.32543 0.3254,0.85307 0,1.17851l-5,4.99998c-0.3255,0.3255 -0.85309,0.3255 -1.17853,0l-5,-4.99998c-0.32544,-0.32544 -0.32544,-0.85308 0,-1.17852z" fill="#fff" id="svg_1"/>
+
+                                <path fill="#000" opacity="NaN" d="m10.63492,11.7857" id="svg_2"/>
+                            </g>
+                        </svg>
                     </a>
 
                     <!-- Dropdown Start -->
@@ -124,7 +135,7 @@ const toggleTheme = () => {
                         <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
                             <li>
                                 <a href="profile.html"
-                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-200 ease-in-out hover:text-primary dark:hover:text-white lg:text-base">
                                     <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -139,7 +150,7 @@ const toggleTheme = () => {
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-200 ease-in-out hover:text-primary dark:hover:text-white lg:text-base">
                                     <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -151,7 +162,7 @@ const toggleTheme = () => {
                             </li>
                             <li>
                                 <a href="settings.html"
-                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+                                    class="flex items-center gap-3.5 text-sm text-gray-400 font-medium duration-200 ease-in-out hover:text-primary dark:hover:text-white lg:text-base">
                                     <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -166,7 +177,7 @@ const toggleTheme = () => {
                             </li>
                         </ul>
                         <button
-                            class="flex items-center gap-3.5 py-4 px-6 text-sm text-gray-400 font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+                            class="flex items-center gap-3.5 py-4 px-6 text-sm text-gray-400 font-medium duration-200 ease-in-out hover:text-primary dark:hover:text-white lg:text-base">
                             <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path

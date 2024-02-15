@@ -2,7 +2,7 @@
 
 namespace App\Domains\Social\Models;
 
-use App\Domains\Social\Models\Traits\Scope\BoardsScope;
+use App\Domains\Social\Models\Traits\Scope\BoardScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -10,24 +10,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Boards.
  * #TODO <complete the content of the this model>
  */
-class Boards extends Model
+class Board extends Model
 {
 
-    use BoardsScope;
+    use BoardScope;
 
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = '';
+    protected $table = 'boards';
 
     /**
      * The primary key in this model.
      * 
      * @var string
      */
-    protected $primaryKey = '';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -35,6 +35,8 @@ class Boards extends Model
      * @var array
      */
     protected $fillabel = [
-        '',
+        'author_id',
+        'title',
+        'content'
     ];
 }
