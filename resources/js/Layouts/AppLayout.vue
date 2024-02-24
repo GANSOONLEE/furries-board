@@ -51,9 +51,9 @@ const logout = () => {
                                 <NavLink :href="route('backend.user.dashboard')" :active="route().current('backend.user.dashboard')">
                                     儀表板
                                 </NavLink>
-                                <NavLink :href="route('backend.user.board')" :active="route().current('backend.user.board')">
+                                <!-- <NavLink :href="route('backend.user.board')" :active="route().current('backend.user.board')">
                                     您的貼文
-                                </NavLink>
+                                </NavLink> -->
                             </div>
                         </div>
 

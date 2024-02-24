@@ -45,7 +45,7 @@ const toggleTheme = () => {
 
         <div class="sm:flex top-0 left-1/2 sm:translate-x-0 sm:left-0 p-6 text-end z-10">
 
-            <Link :href="''" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+            <Link :href="route('home')" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
                 LOGO
                 <img src="" alt="">
             </Link>
@@ -54,9 +54,9 @@ const toggleTheme = () => {
 
         <div class="hidden sm:flex sm:justify-center gap-x-4 top-0 translate-x-1/4 p-6 text-end z-10 ml-auto mr-auto">
 
-            <Link :href="''" class="font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('home') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">首頁</Link>
-            <Link :href="''" class="font-semibold hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('explorer') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">探索</Link>
-            <Link :href="''" class="font-semibold hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('timeline') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">時間軸</Link>
+            <Link :href="route('home')" class="font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('home') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">主頁</Link>
+            <Link :href="route('explore')" class="font-semibold hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('explore') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">探索</Link>
+            <Link v-if="$page.props.auth.user" :href="route('your-post')" class="font-semibold hover:text-gray-900 dark:text-gray-400 dark:hover:text-white px-2 pb-1" :class="route().current('your-post') ? ' border-b-2 border-primary text-primary' : 'text-gray-600' ">您的帖文</Link>
 
         </div>
 

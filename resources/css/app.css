@@ -10,6 +10,21 @@
 
 @layer components {
 
+    tr.space > th {
+        @apply px-4 py-3;
+    }
+
+    tr.space > td {
+        @apply px-3 py-2;
+    }
+
+    tr.border-line > th:not(:first-child), tr.border-line > td:not(:first-child) {
+        @apply border-l;
+    }
+
+    tr.nowrap > th, tr.nowrap > td {
+        @apply whitespace-nowrap;
+    }
 }
 
 @layer utilities {

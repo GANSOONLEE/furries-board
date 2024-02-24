@@ -32,7 +32,7 @@ onMounted(() => {
 
 <template>
 
-    <FrontendAppLayout :page="'主頁'">
+    <FrontendAppLayout :page="'探索'">
 
         <div class="flex flex-col justify-start items-center gap-y-8 mt-12">
 
